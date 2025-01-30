@@ -20,6 +20,7 @@ def generate_charts(file_path, output_folder="output"):
     # --- Dystans (km) ---
     # Posortowanie danych
     df_sorted = df_filtered.sort_values(by="Distance (km)", ascending=False)
+    total_distance = df_sorted["Distance (km)"].sum()
     plt.figure(figsize=(12, 6))
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="blue")
     plt.ylabel("Dystans (km)")
@@ -28,6 +29,7 @@ def generate_charts(file_path, output_folder="output"):
     for bar in bars:
         height = bar.get_height()
         plt.text(bar.get_x() + bar.get_width()/2, height, f"{height:.2f}", ha='center', va='bottom', fontsize=10)
+    plt.text(0.95, 0.95, f"Całkowity dystans drużyny: {total_distance:.2f} km", ha='right', va='top', transform=plt.gca().transAxes, fontsize=12, fontweight='bold', color='black')
     plt.xticks(rotation=45)
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.tight_layout()
