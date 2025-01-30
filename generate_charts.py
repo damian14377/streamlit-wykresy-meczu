@@ -29,7 +29,7 @@ def generate_charts(file_path, output_folder="output"):
         height = bar.get_height()
         plt.text(bar.get_x() + bar.get_width()/2, height, f"{height:.2f}", ha='center', va='bottom', fontsize=10)
     plt.xticks(rotation=45)
-    plt.grid(axis="y")
+    plt.grid(axis="y", linewidth=0.5, color='gray', linestyle='--')
     plt.tight_layout()
     plt.savefig(f"{output_folder}/dystans_{session_title}.png", dpi=600)
     plt.clf()
