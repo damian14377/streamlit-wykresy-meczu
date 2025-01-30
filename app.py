@@ -18,14 +18,18 @@ if uploaded_file is not None:
 
     # Generowanie wykresów
     st.write("Generowanie wykresów...")
-    generate_charts(file_path)
-
-    st.success(f"Wykresy zostały zapisane w folderze 'output'.")
-
-    # Dodanie przycisku do pobrania wykresów
-    output_folder = "output"
     
-    # Pobierz pliki z folderu output
+    # Generowanie wykresów
+    session_title = uploaded_file.name.split('.')[0]  # Przyjmujemy nazwę pliku jako Session Title
+    output_folder = os.path.join("output", session_title)
+    os.makedirs(output_folder, exist_ok=True)
+
+    # Przekazanie do funkcji generującej wykresy
+    generate_charts(file_path, output_folder)
+
+    st.success(f"Wykresy zostały zapisane w folderze '{output_folder}'.")
+
+    # Pobieranie wykresów z folderu
     for file_name in os.listdir(output_folder):
         if file_name.endswith(".png"):
             file_path = os.path.join(output_folder, file_name)
