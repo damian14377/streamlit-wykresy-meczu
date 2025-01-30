@@ -16,7 +16,7 @@ def generate_high_quality_charts(file_path, output_folder="output"):
     # Utworzenie folderu output z nazwą session_title
     os.makedirs(output_folder, exist_ok=True)
 
-    # --- Dystans (km) ---
+    # --- 1. Dystans (km) ---
     df_sorted = df_filtered.sort_values(by="Distance (km)", ascending=False)
     plt.figure(figsize=(16, 10))  # Większy rozmiar wykresu
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="blue")
@@ -34,7 +34,7 @@ def generate_high_quality_charts(file_path, output_folder="output"):
     plt.savefig(f"{output_folder}/dystans_{session_title}.pdf")  # Zapis w formacie PDF (wektorowy)
     plt.clf()
 
-    # --- Top Speed (km/h) ---
+    # --- 2. Top Speed (km/h) ---
     df_sorted_speed = df_filtered.sort_values(by="Top Speed (km/h)", ascending=False)
     plt.figure(figsize=(16, 10))  # Większy rozmiar wykresu
     bars = plt.bar(df_sorted_speed["Player Name"], df_sorted_speed["Top Speed (km/h)"], color="red")
@@ -52,7 +52,7 @@ def generate_high_quality_charts(file_path, output_folder="output"):
     plt.savefig(f"{output_folder}/top_speed_{session_title}.pdf")  # Zapis w formacie PDF (wektorowy)
     plt.clf()
 
-    # --- Dystans na minutę (m/min) ---
+    # --- 3. Dystans na minutę (m/min) ---
     df_sorted_dpm = df_filtered.sort_values(by="Distance Per Min (m/min)", ascending=False)
     plt.figure(figsize=(16, 10))  # Większy rozmiar wykresu
     bars = plt.bar(df_sorted_dpm["Player Name"], df_sorted_dpm["Distance Per Min (m/min)"], color="green")
@@ -70,7 +70,7 @@ def generate_high_quality_charts(file_path, output_folder="output"):
     plt.savefig(f"{output_folder}/dystans_na_minute_{session_title}.pdf")  # Zapis w formacie PDF (wektorowy)
     plt.clf()
 
-    # --- Przyspieszenia i hamowania (1-2 m/s²) ---
+    # --- 4. Przyspieszenia i hamowania (1-2 m/s²) ---
     df_sorted_acc_dec = df_filtered.sort_values(by=["Accelerations Zone Count: 1 - 2 m/s/s", "Deceleration Zone Count: 1 - 2 m/s/s"], ascending=False)
     plt.figure(figsize=(16, 10))  # Większy rozmiar wykresu
     bar_width = 0.4
@@ -91,7 +91,7 @@ def generate_high_quality_charts(file_path, output_folder="output"):
     plt.savefig(f"{output_folder}/przyspieszenia_i_hamowania_{session_title}.pdf")  # Zapis w formacie PDF (wektorowy)
     plt.clf()
 
-    # --- Dystans w strefach prędkości 4 i 5 (m) ---
+    # --- 5. Dystans w strefach prędkości 4 i 5 (m) ---
     df_sorted_speed_zones = df_filtered.sort_values(by=["Distance in Speed Zone 4  (km)", "Distance in Speed Zone 5  (km)"], ascending=False)
     plt.figure(figsize=(16, 10))  # Większy rozmiar wykresu
     bar_width = 0.4
@@ -112,4 +112,8 @@ def generate_high_quality_charts(file_path, output_folder="output"):
     plt.savefig(f"{output_folder}/strefy_predkosci_4_5_{session_title}.pdf")  # Zapis w formacie PDF (wektorowy)
     plt.clf()
 
-    print(f"Wykresy zostały zapisane w folderze: {output_folder}")
+    return output_folder
+
+# Wywołanie funkcji (po załadowaniu pliku)
+output_folder = generate_high_quality_charts(file_path, output_folder)
+output_folder
