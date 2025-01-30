@@ -22,7 +22,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.figure(figsize=(12, 6))
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="blue")
     plt.ylabel("Dystans (km)")
-    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)
+    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Dystans (km)", fontsize=14, pad=10)
     for bar in bars:
         height = bar.get_height()
@@ -39,7 +39,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.figure(figsize=(12, 6))
     bars = plt.bar(df_sorted_speed["Player Name"], df_sorted_speed["Top Speed (km/h)"], color="red")
     plt.ylabel("Top Speed (km/h)")
-    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)
+    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Top Speed (km/h)", fontsize=14, pad=10)
     for bar in bars:
         height = bar.get_height()
@@ -56,7 +56,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.figure(figsize=(12, 6))
     bars = plt.bar(df_sorted_dpm["Player Name"], df_sorted_dpm["Distance Per Min (m/min)"], color="green")
     plt.ylabel("Dystans na minutę (m/min)")
-    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)
+    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Dystans na minutę (m/min)", fontsize=14, pad=10)
     for bar in bars:
         height = bar.get_height()
@@ -77,7 +77,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.bar(x + bar_width/2, df_sorted_acc_dec["Deceleration Zone Count: 1 - 2 m/s/s"], width=bar_width, label="Hamowania (1-2 m/s²)", color="red")
     plt.xticks(x, df_sorted_acc_dec["Player Name"], rotation=45)
     plt.ylabel("Liczba przyspieszeń i hamowań")
-    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)
+    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Przyspieszenia i hamowania (1-2 m/s²)", fontsize=14, pad=10)
     for i, (acc, dec) in enumerate(zip(df_sorted_acc_dec["Accelerations Zone Count: 1 - 2 m/s/s"], df_sorted_acc_dec["Deceleration Zone Count: 1 - 2 m/s/s"])):
         plt.text(i - bar_width/2, acc, f"{int(acc)}", ha='center', va='bottom', fontsize=10)
@@ -98,7 +98,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.bar(x + bar_width/2, df_sorted_speed_zones["Distance in Speed Zone 5  (km)"] * 1000, width=bar_width, label="Sprint (m)", color="red")  # Przeliczone na metry
     plt.xticks(x, df_sorted_speed_zones["Player Name"], rotation=45)
     plt.ylabel("Dystans w strefach prędkości (m)")
-    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)
+    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Dystans w strefach prędkości 4 (High Speed Running) i 5 (Sprint) (m)", fontsize=14, pad=10)
     for i, (zone4, zone5) in enumerate(zip(df_sorted_speed_zones["Distance in Speed Zone 4  (km)"], df_sorted_speed_zones["Distance in Speed Zone 5  (km)"])):
         plt.text(i - bar_width/2, zone4 * 1000, f"{int(zone4 * 1000)}", ha='center', va='bottom', fontsize=10)
@@ -110,4 +110,3 @@ def generate_charts(file_path, output_folder="output"):
     plt.clf()
 
     print(f"Wykresy zostały zapisane w folderze: {output_folder}")
-
