@@ -13,7 +13,7 @@ def generate_charts(file_path, output_folder="output"):
     # Sprawdzenie tytułu sesji
     session_title = df_filtered["Session Title"].iloc[0]
 
-    # Utworzenie folderu output, jeśli nie istnieje
+    # Utworzenie folderu output z nazwą session_title
     os.makedirs(output_folder, exist_ok=True)
 
     # Wykres 1: Dystans (km)
