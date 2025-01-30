@@ -22,7 +22,7 @@ def generate_charts(file_path, output_folder="output"):
     df_sorted = df_filtered.sort_values(by="Distance (km)", ascending=False)
     total_distance = df_sorted["Distance (km)"].sum()
     plt.figure(figsize=(12, 6))
-    bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="blue")
+    bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="#FFAF00")
     plt.ylabel("Dystans (km)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Dystans (km)", fontsize=14, pad=10)
@@ -40,7 +40,7 @@ def generate_charts(file_path, output_folder="output"):
     # Posortowanie danych
     df_sorted_speed = df_filtered.sort_values(by="Top Speed (km/h)", ascending=False)
     plt.figure(figsize=(12, 6))
-    bars = plt.bar(df_sorted_speed["Player Name"], df_sorted_speed["Top Speed (km/h)"], color="red")
+    bars = plt.bar(df_sorted_speed["Player Name"], df_sorted_speed["Top Speed (km/h)"], color="#FFAF00")
     plt.ylabel("Top Speed (km/h)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Top Speed (km/h)", fontsize=14, pad=10)
@@ -57,7 +57,7 @@ def generate_charts(file_path, output_folder="output"):
     # Posortowanie danych
     df_sorted_dpm = df_filtered.sort_values(by="Distance Per Min (m/min)", ascending=False)
     plt.figure(figsize=(12, 6))
-    bars = plt.bar(df_sorted_dpm["Player Name"], df_sorted_dpm["Distance Per Min (m/min)"], color="green")
+    bars = plt.bar(df_sorted_dpm["Player Name"], df_sorted_dpm["Distance Per Min (m/min)"], color="#FFAF00")
     plt.ylabel("Dystans na minutę (m/min)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
     plt.title("Dystans na minutę (m/min)", fontsize=14, pad=10)
@@ -76,8 +76,8 @@ def generate_charts(file_path, output_folder="output"):
     plt.figure(figsize=(12, 6))
     bar_width = 0.4
     x = np.arange(len(df_sorted_acc_dec["Player Name"]))
-    plt.bar(x - bar_width/2, df_sorted_acc_dec["Accelerations Zone Count: 1 - 2 m/s/s"], width=bar_width, label="Przyspieszenia (1-2 m/s²)", color="blue")
-    plt.bar(x + bar_width/2, df_sorted_acc_dec["Deceleration Zone Count: 1 - 2 m/s/s"], width=bar_width, label="Hamowania (1-2 m/s²)", color="red")
+    plt.bar(x - bar_width/2, df_sorted_acc_dec["Accelerations Zone Count: 1 - 2 m/s/s"], width=bar_width, label="Przyspieszenia (1-2 m/s²)", color="#FFAF00")
+    plt.bar(x + bar_width/2, df_sorted_acc_dec["Deceleration Zone Count: 1 - 2 m/s/s"], width=bar_width, label="Hamowania (1-2 m/s²)", color="#F46920")
     plt.xticks(x, df_sorted_acc_dec["Player Name"], rotation=45)
     plt.ylabel("Liczba przyspieszeń i hamowań")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
@@ -97,8 +97,8 @@ def generate_charts(file_path, output_folder="output"):
     plt.figure(figsize=(12, 6))
     bar_width = 0.4
     x = np.arange(len(df_sorted_speed_zones["Player Name"]))
-    plt.bar(x - bar_width/2, df_sorted_speed_zones["Distance in Speed Zone 4  (km)"] * 1000, width=bar_width, label="High Speed Running (m)", color="blue")  # Przeliczone na metry
-    plt.bar(x + bar_width/2, df_sorted_speed_zones["Distance in Speed Zone 5  (km)"] * 1000, width=bar_width, label="Sprint (m)", color="red")  # Przeliczone na metry
+    plt.bar(x - bar_width/2, df_sorted_speed_zones["Distance in Speed Zone 4  (km)"] * 1000, width=bar_width, label="High Speed Running (m)", color="#FFAF00")  # Przeliczone na metry
+    plt.bar(x + bar_width/2, df_sorted_speed_zones["Distance in Speed Zone 5  (km)"] * 1000, width=bar_width, label="Sprint (m)", color="#F46920")  # Przeliczone na metry
     plt.xticks(x, df_sorted_speed_zones["Player Name"], rotation=45)
     plt.ylabel("Dystans w strefach prędkości (m)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
