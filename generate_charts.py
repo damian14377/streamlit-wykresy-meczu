@@ -106,7 +106,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.grid(axis="y")
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f"{output_folder}/strefy_predkosci_4_5_{session_title}.png")
+    plt.savefig(f"{output_folder}/strefy_predkosci_4_5_{session_title}.png", dpi=600)
     plt.clf()
 
     print(f"Wykresy zostały zapisane w folderze: {output_folder}")
