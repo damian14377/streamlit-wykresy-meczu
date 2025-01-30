@@ -21,3 +21,20 @@ if uploaded_file is not None:
     generate_charts(file_path)
 
     st.success(f"Wykresy zostały zapisane w folderze 'output'.")
+
+    # Dodanie przycisku do pobrania wykresów
+    output_folder = "output"
+    
+    # Pobierz pliki z folderu output
+    for file_name in os.listdir(output_folder):
+        if file_name.endswith(".png"):
+            file_path = os.path.join(output_folder, file_name)
+            
+            # Dodanie przycisku do pobrania pliku
+            with open(file_path, "rb") as f:
+                st.download_button(
+                    label=f"Pobierz wykres: {file_name}",
+                    data=f,
+                    file_name=file_name,
+                    mime="image/png"
+                )
