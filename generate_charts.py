@@ -18,21 +18,32 @@ def generate_charts(file_path, output_folder="output"):
     os.makedirs(output_folder, exist_ok=True)
 
     # --- Dystans (km) ---
-    # Posortowanie danych
-    df_sorted = df_filtered.sort_values(by="Distance (km)", ascending=False)
-    plt.figure(figsize=(12, 6))
-    bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="#ffaf00")
-    plt.ylabel("Dystans (km)")
-    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
-    plt.title("Dystans (km)", fontsize=14, pad=10)
-    for bar in bars:
-        height = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width()/2, height, f"{height:.2f}", ha='center', va='bottom', fontsize=10)
-    plt.xticks(rotation=45)
-    plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
-    plt.tight_layout()
-    plt.savefig(f"{output_folder}/dystans_{session_title}.png", dpi=600)
-    plt.clf()
+# Posortowanie danych
+df_sorted = df_filtered.sort_values(by="Distance (km)", ascending=False)
+
+# Obliczenie całkowitego dystansu drużyny
+total_distance = df_sorted["Distance (km)"].sum()
+
+# Utworzenie wykresu
+plt.figure(figsize=(12, 6))
+bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="blue")
+plt.ylabel("Dystans (km)")
+plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', y=1.05)  # Pogrubiony nagłówek
+plt.title("Dystans (km)", fontsize=14, pad=10)
+
+# Dodanie wartości nad słupkami
+for bar in bars:
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, height, f"{height:.2f}", ha='center', va='bottom', fontsize=10)
+
+# Dodanie informacji o całkowitym dystansie drużyny
+plt.text(0.95, 0.95, f"Całkowity dystans drużyny: {total_distance:.2f} km", ha='right', va='top', transform=plt.gca().transAxes, fontsize=12, fontweight='bold', color='black')
+
+plt.xticks(rotation=45)
+plt.grid(axis="y", linewidth=0.5, color='gray', linestyle='--', alpha=0.3)
+plt.tight_layout()
+plt.savefig(f"{output_folder}/dystans_{session_title}.png", dpi=600)
+plt.clf()
 
     # --- Top Speed (km/h) ---
     # Posortowanie danych
