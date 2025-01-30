@@ -29,7 +29,7 @@ def generate_charts(file_path, output_folder="output"):
     for bar in bars:
         height = bar.get_height()
         plt.text(bar.get_x() + bar.get_width()/2, height, f"{height:.2f}", ha='center', va='bottom', fontsize=10)
-    plt.text(f"Całkowity dystans drużyny: {total_distance:.2f} km", ha='right', va='top', transform=plt.gca().transAxes, fontsize=12, fontweight='bold', color='black')
+    plt.text(0.95, 0.95, f"Całkowity dystans drużyny: {total_distance:.2f} km", ha='right', va='top', transform=plt.gca().transAxes, fontsize=12, fontweight='bold', color='black')
     plt.xticks(rotation=45)
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.tight_layout()
