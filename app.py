@@ -3,7 +3,7 @@ import os
 from generate_charts import generate_charts
 
 # Tytuł aplikacji
-st.title('Automatyczne Generowanie Wykresów')
+st.title('Generowanie wykresów GPS')
 
 # Opcja wgrania pliku
 uploaded_file = st.file_uploader("Wgraj plik CSV", type=["csv"])
