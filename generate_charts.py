@@ -41,7 +41,7 @@ def generate_charts(file_path, output_folder="output"):
     # --- Top Speed (km/h) ---
     # Posortowanie danych
     df_sorted_speed = df_filtered.sort_values(by="Top Speed (km/h)", ascending=False)
-    plt.figure(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))  # Tworzenie figury i osi
     bars = plt.bar(df_sorted_speed["Player Name"], df_sorted_speed["Top Speed (km/h)"], color="#FFAF00")
     plt.ylabel("Top Speed (km/h)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', ha='left', y=1.05)
@@ -59,7 +59,7 @@ def generate_charts(file_path, output_folder="output"):
     # --- Dystans na minutę (m/min) ---
     # Posortowanie danych
     df_sorted_dpm = df_filtered.sort_values(by="Distance Per Min (m/min)", ascending=False)
-    plt.figure(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))  # Tworzenie figury i osi
     bars = plt.bar(df_sorted_dpm["Player Name"], df_sorted_dpm["Distance Per Min (m/min)"], color="#FFAF00")
     plt.ylabel("Dystans na minutę (m/min)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', ha='left', y=1.05)
@@ -77,7 +77,7 @@ def generate_charts(file_path, output_folder="output"):
     # --- Przyspieszenia i hamowania (1-2 m/s²) ---
     # Posortowanie danych
     df_sorted_acc_dec = df_filtered.sort_values(by=["Accelerations Zone Count: 1 - 2 m/s/s", "Deceleration Zone Count: 1 - 2 m/s/s"], ascending=False)
-    plt.figure(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))  # Tworzenie figury i osi
     bar_width = 0.4
     x = np.arange(len(df_sorted_acc_dec["Player Name"]))
     plt.bar(x - bar_width/2, df_sorted_acc_dec["Accelerations Zone Count: 1 - 2 m/s/s"], width=bar_width, label="Przyspieszenia (1-2 m/s²)", color="#FFAF00")
@@ -99,7 +99,7 @@ def generate_charts(file_path, output_folder="output"):
     # --- Dystans w strefach prędkości 4 i 5 (m) ---
     # Posortowanie danych
     df_sorted_speed_zones = df_filtered.sort_values(by=["Distance in Speed Zone 4  (km)", "Distance in Speed Zone 5  (km)"], ascending=False)
-    plt.figure(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))  # Tworzenie figury i osi
     bar_width = 0.4
     x = np.arange(len(df_sorted_speed_zones["Player Name"]))
     plt.bar(x - bar_width/2, df_sorted_speed_zones["Distance in Speed Zone 4  (km)"] * 1000, width=bar_width, label="High Speed Running (m)", color="#FFAF00")  # Przeliczone na metry
