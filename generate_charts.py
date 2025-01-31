@@ -35,7 +35,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.xticks(rotation=45)
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.tight_layout()
-    plt.savefig(f"{output_folder}/dystans_{session_title}.png", dpi=600)
+    plt.savefig(f"{output_folder}/dystans_{session_title}.png", dpi=500)
     plt.clf()
 
     # --- Top Speed (km/h) ---
