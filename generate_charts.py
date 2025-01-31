@@ -24,7 +24,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.figure(figsize=(12, 6))
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="#FFAF00")
     plt.ylabel("Dystans (km)")
-    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', ha="left")  # Pogrubiony nagłówek
+    plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold')  # Pogrubiony nagłówek
     plt.title("Dystans (km)", fontsize=14, pad=10)
     for bar in bars:
         height = bar.get_height()
