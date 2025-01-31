@@ -24,6 +24,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.figure(figsize=(12, 6))
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="#FFAF00")
     plt.ylabel("Dystans (km)")
+    fig, ax = plt.subplots(figsize=(12, 6))  # Tworzenie figury i osi
     fig.text(0.05, 0.98, f"vs {session_title}", ha='left', va='bottom', fontsize=18, fontweight='bold')
     plt.title("Dystans (km)", fontsize=14, pad=10)
     for bar in bars:
