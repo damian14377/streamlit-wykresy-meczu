@@ -53,7 +53,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.xticks(rotation=45)
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.tight_layout()
-    plt.savefig(f"{output_folder}/top_speed_{session_title}.png", dpi=600)
+    plt.savefig(f"{output_folder}/top_speed_{session_title}.png", dpi=500)
     plt.clf()
 
     # --- Dystans na minutę (m/min) ---
@@ -71,7 +71,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.xticks(rotation=45)
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.tight_layout()
-    plt.savefig(f"{output_folder}/dystans_na_minute_{session_title}.png", dpi=600)
+    plt.savefig(f"{output_folder}/dystans_na_minute_{session_title}.png", dpi=500)
     plt.clf()
 
     # --- Przyspieszenia i hamowania (1-2 m/s²) ---
@@ -93,7 +93,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f"{output_folder}/przyspieszenia_i_hamowania_{session_title}.png", dpi=600)
+    plt.savefig(f"{output_folder}/przyspieszenia_i_hamowania_{session_title}.png", dpi=500)
     plt.clf()
 
     # --- Dystans w strefach prędkości 4 i 5 (m) ---
@@ -115,7 +115,7 @@ def generate_charts(file_path, output_folder="output"):
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f"{output_folder}/strefy_predkosci_4_5_{session_title}.png", dpi=600)
+    plt.savefig(f"{output_folder}/strefy_predkosci_4_5_{session_title}.png", dpi=500)
     plt.clf()
 
     print(f"Wykresy zostały zapisane w folderze: {output_folder}")
