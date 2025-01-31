@@ -25,7 +25,7 @@ def generate_charts(file_path, output_folder="output"):
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="#FFAF00")
     plt.ylabel("Dystans (km)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', ha='left', y=1.05)
-    fig.text(0.05, 0.94, f"vs {session_title}", ha='left', va='bottom', fontsize=18, fontweight='bold')
+    fig.text(0.05, 0.93, f"vs {session_title}", ha='left', va='bottom', fontsize=18, fontweight='bold')
     plt.title("Dystans (km)", fontsize=14, pad=10)
     for bar in bars:
         height = bar.get_height()
