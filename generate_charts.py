@@ -21,7 +21,7 @@ def generate_charts(file_path, output_folder="output"):
     # Posortowanie danych
     df_sorted = df_filtered.sort_values(by="Distance (km)", ascending=False)
     total_distance = df_sorted["Distance (km)"].sum()
-    fig, ax = plt.subplots(figsize=(12, 6))  # Tworzenie figury i osi
+    fig, ax = plt.subplots(figsize=(8.27, 11.69))  # Tworzenie figury i osi
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="#FFAF00")
     plt.ylabel("Dystans (km)")
     plt.suptitle(f"vs {session_title}", fontsize=18, fontweight='bold', ha='left', y=1.05)
