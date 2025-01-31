@@ -24,13 +24,12 @@ def generate_charts(file_path, output_folder="output"):
     fig, ax = plt.subplots(figsize=(12, 6))  # Tworzenie figury i osi
     bars = plt.bar(df_sorted["Player Name"], df_sorted["Distance (km)"], color="#FFAF00")
     plt.ylabel("Dystans (km)")
-    fig.text(0.05, 0.90, f"vs {session_title}", ha='left', va='bottom', fontsize=18, fontweight='bold')
+    fig.text(0.05, 0.94, f"vs {session_title}", ha='left', va='bottom', fontsize=18, fontweight='bold')
     plt.title("Dystans (km)", fontsize=14, pad=10)
     for bar in bars:
         height = bar.get_height()
         plt.text(bar.get_x() + bar.get_width()/2, height, f"{height:.2f}", ha='center', va='bottom', fontsize=10)
     plt.text(0.95, 0.95, f"Całkowity dystans drużyny: {total_distance:.2f} km", ha='right', va='top', transform=plt.gca().transAxes, fontsize=12, fontweight='bold', color='black')
-    plt.subplots_adjust(top=0.65, bottom=0.1)
     plt.xticks(rotation=45)
     plt.grid(axis="y", linewidth=0.5, color='gray', alpha=0.3)
     plt.tight_layout()
